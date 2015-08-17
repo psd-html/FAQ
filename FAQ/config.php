@@ -122,7 +122,20 @@ if(!empty($_POST)) {
         <p>
             <label for="reponse"><?php $plxPlugin->lang('L_FORM_2') ?></label>
             <textarea rows="8"   name="reponse-new" value=""></textarea>
-        </p>                                                                 
+        </p> 
+
+        <p>
+            Vous pouvez ajouter les mises en forme du texte HTML <br>
+            <code>
+                    &lt;a href='votre lien' title='votre titre'&gt;Votre lien&lt;/a&gt;
+            </code>
+            <br>
+            <code>
+                    &lt;br&gt;, &lt;p&gt; &lt;/p&gt; ...
+            </code>
+        </p>  
+
+        <p>Pensez à mettre des simples quote.</p>                                                              
                        
         <p class="in-action-bar">
             <?php echo plxToken::getTokenPostMethod() ?>
@@ -147,6 +160,10 @@ if(!empty($_POST)) {
             </code>
 
     </p>
+
+    <p>Si vous avez des questions, merci de me contacter sur mon site: <a href="http://libertea.fr" title="libertea">http://libertea.fr</a></p>
+
+
 
     
 </div>

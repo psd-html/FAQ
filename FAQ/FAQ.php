@@ -15,7 +15,7 @@ class FAQ extends plxPlugin {
 		}
 
 		public function ThemeEndHead() { ?>
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 			<?php
 		}	
 			
@@ -37,7 +37,7 @@ class FAQ extends plxPlugin {
 
 		<div class="friend" ng-repeat="friend in friendlist | filter:searchFriend" style="margin-top:20px">
 				<h3>{{friend.question}}</h3>
-				<p>{{friend.reponse}}</p>
+				<p ng-bind-html="friend.reponse| unsafe"></p>
 		</div>		
 
 
@@ -61,18 +61,28 @@ class FAQ extends plxPlugin {
 				$reponse = $this->getParam('reponse'.$i);
 
 				$a =   html_entity_decode($question, ENT_QUOTES, 'UTF-8');
-				$b =   html_entity_decode ($reponse, ENT_QUOTES, 'UTF-8');
+				$b =   html_entity_decode($reponse, ENT_QUOTES, 'UTF-8');
 
 
 				if(!empty($question)) { ?>
-					{"question": "<?php echo $a;?>",  "reponse": "<?php echo $b;?>"},
+					{"question": "<?php echo $a;?>",  "reponse": "<?php echo ($b);?>"},
 				<?php
 				}// endif			
 			}// endfor	?>
 
 		        ];
 		    });
+
+		    // Préserver le code HTML dans la sortie de texte 
+			app.filter('unsafe', function($sce) {
+			    return function(val) {
+			        return $sce.trustAsHtml(val);
+			    };
+			});
+
 		</script>
+
+
 
 		<?php
 		}	
