@@ -66,7 +66,7 @@ class FAQ extends plxPlugin {
 
 					//nettoyage de la chaîne 
 					$b = preg_replace("/\s+/", " ", $reponse);
-					$b = html_entity_decode($b, ENT_HTML5, 'UTF-8');
+					$b = html_entity_decode($b, ENT_QUOTES, 'UTF-8');
 
 					if(!empty($question)) { ?>
 						{"question": "<?php echo $a;?>",  "reponse": "<?php echo $b;?>"},
