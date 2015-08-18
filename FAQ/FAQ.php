@@ -29,7 +29,9 @@ class FAQ extends plxPlugin {
 		}
 	
 
-		public function FAQ() {?>
+		public function FAQ() {
+
+		?>			
 
 		<div ng-app="myApp" ng-controller="MainCtrl">
 
@@ -45,6 +47,7 @@ class FAQ extends plxPlugin {
 
 
 		</div>
+
 
 		<script>
 		    var app = angular.module('myApp', []);
@@ -63,12 +66,20 @@ class FAQ extends plxPlugin {
 				$question = $this->getParam('question'.$i);
 				$reponse = $this->getParam('reponse'.$i);
 
-				$a = html_entity_decode($question, ENT_QUOTES, 'UTF-8');
-				$b = html_entity_decode($reponse, ENT_QUOTES, 'UTF-8');
 
+
+				//On traite les valeurs de Question (a) et de réponse (b)
+				$a = html_entity_decode($question, ENT_QUOTES, 'UTF-8');
+
+
+				//nettoyage de la chaîne 
+				$b = preg_replace("/\s+/", " ", $reponse);
+				$b = html_entity_decode($b, ENT_HTML5, 'UTF-8');
+
+				
 
 				if(!empty($question)) { ?>
-					{"question": "<?php echo $a;?>",  "reponse": "<?php echo ($b);?>"},
+					{"question": "<?php echo $a;?>",  "reponse": "<?php echo $b;?>"},
 				<?php
 				}// endif			
 			}// endfor	?>
@@ -76,7 +87,7 @@ class FAQ extends plxPlugin {
 		        ];
 		    });
 
-		    // Préserver le code HTML dans la sortie de texte 
+		    // Préserver le code HTML dans la sortie du texte 
 			app.filter('unsafe', function($sce) {
 			    return function(val) {
 			        return $sce.trustAsHtml(val);
