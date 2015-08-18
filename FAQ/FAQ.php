@@ -8,6 +8,7 @@ class FAQ extends plxPlugin {
 			$this->setConfigProfil(PROFIL_ADMIN);
 
 			$this->addHook('AdminTopEndHead', 'AdminTopEndHead');
+
 			$this->addHook('ThemeEndHead', 'ThemeEndHead');
 			$this->addHook('ThemeEndBody', 'ThemeEndBody');
 
@@ -21,6 +22,8 @@ class FAQ extends plxPlugin {
 			
 
 		public function AdminTopEndHead() { ?>
+
+			
 			<link rel="stylesheet" href="<?php echo PLX_PLUGINS ?>FAQ/app/style.css" media="screen"/>
 			<?php
 		}
@@ -60,8 +63,8 @@ class FAQ extends plxPlugin {
 				$question = $this->getParam('question'.$i);
 				$reponse = $this->getParam('reponse'.$i);
 
-				$a =   html_entity_decode($question, ENT_QUOTES, 'UTF-8');
-				$b =   html_entity_decode($reponse, ENT_QUOTES, 'UTF-8');
+				$a = html_entity_decode($question, ENT_QUOTES, 'UTF-8');
+				$b = html_entity_decode($reponse, ENT_QUOTES, 'UTF-8');
 
 
 				if(!empty($question)) { ?>

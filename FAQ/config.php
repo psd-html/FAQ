@@ -111,32 +111,29 @@ if(!empty($_POST)) {
 
 <h2><?php $plxPlugin->lang('L_NAV_LIEN2') ?></h2>
 
-<div class="new">
+<div class="new" ng-app="angularApp" ng-controller="appController">
 
     <form action="parametres_plugin.php?p=FAQ" method="post">
         <p>
             <label for="question"><?php $plxPlugin->lang('L_FORM_1') ?></label>
              <input type="text" name="question-new" value="" />
         </p>
-        
+
         <p>
             <label for="reponse"><?php $plxPlugin->lang('L_FORM_2') ?></label>
-            <textarea rows="8"   name="reponse-new" value=""></textarea>
-        </p> 
+            <textarea rows="8"   name="reponse-new" value="" ng-model="content"></textarea>
+        </p>
 
         <p>
-            Vous pouvez ajouter les mises en forme du texte HTML <br>
             <code>
-                    &lt;a href='votre lien' title='votre titre'&gt;Votre lien&lt;/a&gt;
+                    &lt;a href='votre lien' title='votre titre'&gt;Votre lien&lt;/a&gt;, &lt;br&gt;, &lt;p&gt; &lt;/p&gt; ...
             </code>
             <br>
-            <code>
-                    &lt;br&gt;, &lt;p&gt; &lt;/p&gt; ...
-            </code>
-        </p>  
+            Vous pouvez ajouter les mises en forme du texte HTML, voir le résultat :
+        </p>
 
-        <p>Pensez à mettre des simples quote.</p>                                                              
-                       
+        <div ng-bind-html="getHtml(content)"></div>
+           
         <p class="in-action-bar">
             <?php echo plxToken::getTokenPostMethod() ?>
             <input class="bt" type="submit" name="submit" value="<?php $plxPlugin->lang('L_FORM_BT2') ?>" />
@@ -171,10 +168,32 @@ if(!empty($_POST)) {
 
 </div>
 
+
+
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="<?php echo PLX_PLUGINS ?>FAQ/app/jquery.tabby.js"></script>
+
+
 <script>
     $(document).ready(function(){
         $('#tabby-1').tabby();
     });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script>
+var app = angular.module("angularApp", []);
+app.controller("appController", function($scope, $sce){
+    $scope.content = "";
+    $scope.getHtml = function(html){
+        return $sce.trustAsHtml(html);
+    };
+});
+
+app.filter('html', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
+});
 </script>
