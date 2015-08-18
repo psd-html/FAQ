@@ -104,7 +104,7 @@ if(!empty($_POST)) {
         </form>
     </div>
 
-</div><!-- de la premiere page -->
+</div><!-- de la page 1 -->
 
 <!-- page pour créer un témoignage -->
 <div data-tab="tab2">
@@ -125,11 +125,14 @@ if(!empty($_POST)) {
         </p>
 
         <p>
+
+            Vous pouvez ajouter les mises en forme du texte en HTML, <b>pensez à utliser des simples quotes.</b>
+            <br>
             <code>
-                    &lt;a href='votre lien' title='votre titre'&gt;Votre lien&lt;/a&gt;, &lt;br&gt;, &lt;p&gt; &lt;/p&gt; ...
+                &lt;a href='votre lien' title='votre titre'&gt;Votre lien&lt;/a&gt;, &lt;br&gt;, &lt;p&gt; &lt;/p&gt; ...
             </code>
             <br>
-            Vous pouvez ajouter les mises en forme du texte HTML, voir le résultat :
+            <b>Résultat :</b>
         </p>
 
         <div ng-bind-html="getHtml(content)"></div>
@@ -142,7 +145,7 @@ if(!empty($_POST)) {
     </form>
 </div>
 
-</div><!-- fin de la page 3 -->
+</div><!-- fin de la page 2 -->
 
 <!-- page de configuration -->
 <div data-tab="tab3">
@@ -151,19 +154,19 @@ if(!empty($_POST)) {
     <p>Pour afficher le plugin Faqs dans une page statique :</p>
 
     <p>
-            <code>
-                    &lt;?php global $plxShow;
-                    eval($plxShow->callHook("FAQ")); ?&gt;
-            </code>
+        <code>
+                &lt;?php global $plxShow;
+                eval($plxShow->callHook("FAQ")); ?&gt;
+        </code>
 
     </p>
 
-    <p>Si vous avez des questions, merci de me contacter sur mon site: <a href="http://libertea.fr" title="libertea">http://libertea.fr</a></p>
+    <p>Pour vérifier les mises à jour des plugins: <a href="http://nextum.fr">NextuM</a>
+
+    <p>Si vous avez des questions, merci de me contacter sur mon site: <a href="http://libertea.fr" title="libertea">http://libertea.fr</a></p>    
 
 
-
-    
-</div>
+</div><!-- fin de la page 3 -->
 
 
 </div>
@@ -173,7 +176,6 @@ if(!empty($_POST)) {
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="<?php echo PLX_PLUGINS ?>FAQ/app/jquery.tabby.js"></script>
-
 
 <script>
     $(document).ready(function(){
