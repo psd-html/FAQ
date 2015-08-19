@@ -5,6 +5,9 @@ class FAQ extends plxPlugin {
 
 			parent::__construct($default_lang);
 
+			# Pour accéder à une page d'administration
+    		$this->setAdminProfil(PROFIL_ADMIN);
+
 			$this->setConfigProfil(PROFIL_ADMIN);
 
 			$this->addHook('AdminTopEndHead', 'AdminTopEndHead');
