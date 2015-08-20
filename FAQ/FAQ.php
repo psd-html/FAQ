@@ -24,7 +24,7 @@ class FAQ extends plxPlugin {
 		}		
 
 		public function AdminTopEndHead() { ?>
-			<link rel="stylesheet" href="<?php echo PLX_PLUGINS ?>FAQ/app/style.css" media="screen"/>
+			<link rel="stylesheet" href="<?php echo PLX_PLUGINS ?>FAQ/app/style.min.css" media="screen"/>
 			<?php
 		}
 	
