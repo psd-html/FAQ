@@ -19,7 +19,7 @@ class FAQ extends plxPlugin {
 		}
 
 		public function ThemeEndHead() { ?>
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
 			<?php
 		}		
 
