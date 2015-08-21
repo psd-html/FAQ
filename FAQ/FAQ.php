@@ -18,40 +18,36 @@ class FAQ extends plxPlugin {
 			$this->addHook('FAQ', 'FAQ');
 		}
 
-		public function ThemeEndHead() { ?>
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
-			<?php
-		}		
-
+		# Charge le fichier style pour la partie admin
 		public function AdminTopEndHead() { ?>
 			<link rel="stylesheet" href="<?php echo PLX_PLUGINS ?>FAQ/app/style.min.css" media="screen"/>
 			<?php
 		}
+
+		public function ThemeEndHead() { ?>
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+			<?php
+		}	
 	
 
 		public function FAQ() {?>			
 
-		<div ng-app="myApp" ng-controller="MainCtrl">
+		<div ng-app="MyFAQ" ng-controller="MyCtrl">
 
-	
-		<input type="text" ng-model="searchFriend" placeholder="Chercher dans la liste">
+			<input type="text" ng-model="searchFaq" placeholder="Chercher dans la liste">
 
-
-
-		<div class="friend" ng-repeat="friend in friendlist | filter:searchFriend" style="margin-top:20px">
-				<h3>{{friend.question}}</h3>
-				<p ng-bind-html="friend.reponse| unsafe"></p>
-		</div>		
-
+			<div class="friend" ng-repeat="Faq in Faqlist | filter:searchFaq" style="margin-top:20px">
+					<h3>{{Faq.question}}</h3>
+					<p ng-bind-html="Faq.reponse| unsafe"></p>
+			</div>		
 
 		</div>
 
-
 		<script>
-		    var app = angular.module('myApp', []);
+		    var app = angular.module('MyFAQ', []);
 
-		    app.controller('MainCtrl', function($scope) {
-		        $scope.friendlist = [ 
+		    app.controller('MyCtrl', function($scope) {
+		        $scope.Faqlist = [ 
 
 		<?php
 
