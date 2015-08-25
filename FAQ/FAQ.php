@@ -30,7 +30,9 @@ class FAQ extends plxPlugin {
 		}	
 	
 
-		public function FAQ() {?>			
+		public function FAQ() {?>
+
+
 
 		<div ng-app="MyFAQ" ng-controller="MyCtrl">
 
@@ -40,6 +42,14 @@ class FAQ extends plxPlugin {
 					<h3>{{Faq.question}}</h3>
 					<p ng-bind-html="Faq.reponse| unsafe"></p>
 			</div>		
+
+			<noscript>
+				<p>
+					Pour accéder à toutes les fonctionnalités de ce site, vous devez activer JavaScript.<br>
+					 Voici les <a href="http://www.enable-javascript.com/fr/" target="_blank">
+					 instructions pour activer JavaScript dans votre navigateur Web</a>
+				</p>
+			</noscript>	
 
 		</div>
 
