@@ -79,11 +79,11 @@ if(!empty($_POST)) {
                             </td>
                             
                             <td class="question">
-                                <textarea rows="2"  name="question<?php echo $i; ?>"><? echo $plxPlugin->getParam(question.$i); ?></textarea>
+                                <textarea rows="2"  name="question<?php echo $i; ?>"><?= $plxPlugin->getParam(question.$i); ?></textarea>
                             </td>
                             
                             <td class="reponse">
-                                <textarea rows="2"   name="reponse<?php echo $i; ?>"><? echo $plxPlugin->getParam(reponse.$i); ?></textarea>
+                                <textarea rows="2"   name="reponse<?php echo $i; ?>"><?= $plxPlugin->getParam(reponse.$i); ?></textarea>
                             </td>
                             
                             <td class="checkbox">
